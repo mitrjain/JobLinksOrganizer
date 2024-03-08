@@ -25,7 +25,7 @@ SPREADSHEET_ID = os.getenv('SPREADSHEET_ID')
 def authenticate_with_g_sheets():
 
     gc = gspread.oauth(
-        credentials_filename='./client_secrets3.json',
+        credentials_filename='./client_secrets.json',
         authorized_user_filename='./storage.json'
     )
     
