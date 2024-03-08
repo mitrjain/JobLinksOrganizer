@@ -1,0 +1,4 @@
+.env
+client_secrets*.json
+storage.json
+bot-env
