@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import re
 from gsheets import Sheets
 import gspread
-import datetime
+from datetime import date
 
 load_dotenv()
 
@@ -70,7 +70,7 @@ async def on_message(message):
     data = []
     for link in links:
         dataObj = {
-            # "timestamp":message.created_at,
+            "timestamp": date.today().strftime("%m-%d-%y"),
             "link":link,
             "type":channel_details[message.channel.id],
             "fresh":"Yes" if fresh else "No",
@@ -91,7 +91,7 @@ async def list_channels():
 
 async def write_to_sheets(data):
     for item in data:
-        worksheet.append_row(values=['',item["link"],item["type"],item["fresh"],item["applied"],item["referral"]])
+        worksheet.append_row(values=[item['timestamp'],item["link"],item["type"],item["fresh"],item["applied"],item["referral"]])
     
 
 client.run(BOT_AUTH_TOKEN)
