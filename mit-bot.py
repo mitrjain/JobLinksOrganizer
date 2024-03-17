@@ -91,6 +91,7 @@ async def list_channels():
 
 async def write_to_sheets(data):
     for item in data:
+        print(f'Streaming: {item}')
         worksheet.append_row(values=[item['timestamp'],item["link"],item["type"],item["fresh"],item["applied"],item["referral"]])
     
 
