@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 import re
 from gsheets import Sheets
 import gspread
-from datetime import date
+from datetime import datetime
+import pytz
 
 load_dotenv()
 
@@ -68,9 +69,10 @@ async def on_message(message):
     links = re.findall(r'\bhttp[^\s]+',message.content)
     print(links)
     data = []
+    los_angeles_timezone = pytz.timezone('America/Los_Angeles')
     for link in links:
         dataObj = {
-            "timestamp": date.today().strftime("%m-%d-%y"),
+            "timestamp": datetime.now(los_angeles_timezone).strftime("%m-%d-%y"),
             "link":link,
             "type":channel_details[message.channel.id],
             "fresh":"Yes" if fresh else "No",
