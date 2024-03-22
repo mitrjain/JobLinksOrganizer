@@ -9,4 +9,4 @@ trigger_deploy_bot:
     - chmod 400 ssh_key.pem 
     - echo $USERNAME
     - echo $HOSTNAME
-    - ssh - i ssh_key.pem -o StrictHostKeyChecking=no ubuntu@$HOSTNAME
+    - ssh -i ssh_key.pem -o StrictHostKeyChecking=no $USERNAME@$HOSTNAME
