@@ -1,15 +1,10 @@
 stages:
   - deploy
 
-deploy_bot:
+trigger_deploy_bot:
   stage: deploy
-  before_script:
+  script:
     - ls -al
-  #   - 
-  #   - ssh - i $ssh_public_key user_name@host_name
-  # script:
-  #   - cd ./JobLinksOrganizer/
-  #   - git pull origin main
-  #   - sudo docker compose -f docker-compose.yaml down
-  #   - sudo docker compose -f docker-compose.yaml build
-  #   - sudo docker compose -f docker-compose.yaml up -d
+    - echo "$SSH_KEY_VARIABLE" > ssh_key.pem
+    - chmod 400 ssh_key.pem 
+    - ssh - i ssh_key.pem -o StrictHostKeyChecking=no $USERNAME@HOSTNAME "cd ./JobLinksOrganizer"; "./deploy.sh"
