@@ -7,6 +7,4 @@ trigger_deploy_bot:
     - ls -al
     - echo "$SSH_KEY_VARIABLE" > ssh_key.pem
     - chmod 400 ssh_key.pem 
-    - echo $USERNAME
-    - echo $HOSTNAME
-    - ssh -i ssh_key.pem -o StrictHostKeyChecking=no $USERNAME@$HOSTNAME
+    - ssh -i ssh_key.pem -o StrictHostKeyChecking=no $USERNAME@$HOSTNAME "cd ./JobLinksOrganizer"; "./deploy.sh"
