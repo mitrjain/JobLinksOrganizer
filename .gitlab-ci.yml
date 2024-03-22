@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+deploy_bot:
+  stage: deploy
+  before_script:
+    - ls -al
+  #   - 
+  #   - ssh - i $ssh_public_key user_name@host_name
+  # script:
+  #   - cd ./JobLinksOrganizer/
+  #   - git pull origin main
+  #   - sudo docker compose -f docker-compose.yaml down
+  #   - sudo docker compose -f docker-compose.yaml build
+  #   - sudo docker compose -f docker-compose.yaml up -d
